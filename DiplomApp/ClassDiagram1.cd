@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="DiplomApp.App">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiplomApp.MainMenuWindow" BaseTypeListCollapsed="true">
+    <Position X="8.25" Y="5.25" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAABBAACAAAACAAAAAAAAAAAAAAAAAIAAAAAAAAAgA=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DiplomApp.Properties.Resources">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiplomApp.Properties.Settings">
+    <Position X="0.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DiplomApp.BanksProductWindow" BaseTypeListCollapsed="true">
+    <Position X="12" Y="0.75" Width="3.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="DiplomApp.BanksProductWindow.BankProductAdapter">
+        <TypeIdentifier>
+          <NewMemberFileName>BanksProductWindow.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAQgRAAACIAAAAAACAAAAQBGAAAMAUAAAAAAAAhAAQA=</HashCode>
+      <FileName>BanksProductWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.204" Collapsed="true" />
+  </Class>
+  <Class Name="DiplomApp.DiagramAndStatisticWindow" BaseTypeListCollapsed="true">
+    <Position X="8" Y="0.75" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAICABAIAAABABAAAEAAAAEEAAAAAAAAAAAASQgAAgA=</HashCode>
+      <FileName>DiagramAndStatisticWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DiplomApp.AddEditProductWindow" BaseTypeListCollapsed="true">
+    <Position X="4.5" Y="1" Width="3.25" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="DiplomApp.AddEditProductWindow.AddEditProductAdapter">
+        <TypeIdentifier>
+          <NewMemberFileName>AddEditProductWindow.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>ABAAgIAAQAAAAAAAAAAAAABAAAAEAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>AddEditProductWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="1.471" Collapsed="true" />
+  </Class>
+  <Class Name="DiplomApp.DebtCardProductAdapter" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAASAAAgAECAAAcAAAAAEAAAAAAAAAIAAAAAAAQ=</HashCode>
+      <FileName>ProductAdapter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DiplomApp.CreditCardProductAdapter" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAgAECAAAcAAAAAEAAQAAAAAAIAAAAAAAQ=</HashCode>
+      <FileName>ProductAdapter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DiplomApp.CreditProductAdapter" BaseTypeListCollapsed="true">
+    <Position X="4.75" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAgAECAAAcAAAAAEIAAAAAAAAIAAAAAAAQ=</HashCode>
+      <FileName>ProductAdapter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DiplomApp.DepositProductAdapter" BaseTypeListCollapsed="true">
+    <Position X="2.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAgAECAAAcAAAAAEAAAAAAAAAoAAAAAAAQ=</HashCode>
+      <FileName>ProductAdapter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="DiplomApp.IProductAdapter">
+    <Position X="2.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAQAAAgAECAAAUAAAAAEAAAAAAAAAIAAAAAAAQ=</HashCode>
+      <FileName>ProductAdapter.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

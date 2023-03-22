@@ -1,0 +1,20 @@
+﻿<Window x:Class="DiplomApp.MainMenuWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DiplomApp"
+        mc:Ignorable="d"
+        Title="MainWindow" SizeToContent="WidthAndHeight" ResizeMode="NoResize" Icon="/Resources/Logo.png">
+    <StackPanel>
+        <Button Click="OpenStatisticButton_Click">
+            <Label Margin="10"  Content="Открыть статистику" FontSize="36"/>
+        </Button>
+        <Button Click="OpenProductsButton_Click">
+            <Label Margin="10"  Content="Открыть банковские продукты" FontSize="36"/>
+        </Button>
+        <Button Click="CloseButton_Click">
+            <Label Margin="10"  Content="Закрыть приложение" FontSize="36"/>
+        </Button>
+    </StackPanel>
+</Window>

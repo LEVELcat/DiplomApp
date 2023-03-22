@@ -1,0 +1,1102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище DiplomDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdPasport" Type="int" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Credit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdClient" Type="int" Nullable="false" />
+          <Property Name="IdCurrency" Type="int" Nullable="false" />
+          <Property Name="IdCreditProduct" Type="int" Nullable="false" />
+          <Property Name="Debt" Type="money" Nullable="false" />
+          <Property Name="DebtRate" Type="decimal" Precision="4" Scale="2" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="MonthlyPayment" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CreditCard">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdClient" Type="int" Nullable="false" />
+          <Property Name="IdPaymentSystem" Type="int" Nullable="false" />
+          <Property Name="IdCreditCardProduct" Type="int" Nullable="false" />
+          <Property Name="IdCurrency" Type="int" />
+          <Property Name="Balance" Type="money" Nullable="false" />
+          <Property Name="Number" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="OwnerName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ValidTHRU" Type="date" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="LoanRate" Type="decimal" Precision="4" Scale="2" Nullable="false" />
+          <Property Name="CreditLimit" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CreditCardProduct">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="IsEnable" Type="bit" Nullable="false" />
+          <Property Name="MinimalDebtRate" Type="decimal" Precision="4" Scale="2" Nullable="false" />
+          <Property Name="NoDebtDay" Type="int" />
+        </EntityType>
+        <EntityType Name="CreditProduct">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdCreditTyp" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="IsEnable" Type="bit" Nullable="false" />
+          <Property Name="MinimalDebtRate" Type="decimal" Precision="4" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CreditType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Currency">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CurrencySymbol" Type="nvarchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="DebitСard">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdClient" Type="int" Nullable="false" />
+          <Property Name="Balance" Type="money" Nullable="false" />
+          <Property Name="idProduct" Type="int" Nullable="false" />
+          <Property Name="Number" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="OwnerName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ValidTHRU" Type="date" Nullable="false" />
+          <Property Name="IdPaymentSystem" Type="int" Nullable="false" />
+          <Property Name="IdCurrency" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DebtCardProduct">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="IsEnable" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Deposit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdClient" Type="int" Nullable="false" />
+          <Property Name="IdCurrency" Type="int" Nullable="false" />
+          <Property Name="IdDepositProduct" Type="int" Nullable="false" />
+          <Property Name="Deposit" Type="money" Nullable="false" />
+          <Property Name="DepositRate" Type="decimal" Precision="4" Scale="2" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="ValidTHRU" Type="date" />
+        </EntityType>
+        <EntityType Name="DepositProduct">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="IsEnable" Type="bit" Nullable="false" />
+          <Property Name="DebtRate" Type="decimal" Precision="4" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Passport">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Patronomic" Type="nvarchar" MaxLength="50" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="BornDate" Type="date" Nullable="false" />
+          <Property Name="MIAOfficeTitle" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="MIAOfficeCode" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="Series" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Number" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="RegistrationPlace" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="PassportPhoto" Type="image" />
+        </EntityType>
+        <EntityType Name="PaymentSystem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_Client_Passport">
+          <End Role="Passport" Type="Self.Passport" Multiplicity="1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Passport">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="IdPasport" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Credit_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Credit" Type="Self.Credit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Credit">
+              <PropertyRef Name="IdClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Credit_CreditProduct">
+          <End Role="CreditProduct" Type="Self.CreditProduct" Multiplicity="1" />
+          <End Role="Credit" Type="Self.Credit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CreditProduct">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Credit">
+              <PropertyRef Name="IdCreditProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Credit_Currency">
+          <End Role="Currency" Type="Self.Currency" Multiplicity="1" />
+          <End Role="Credit" Type="Self.Credit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Credit">
+              <PropertyRef Name="IdCurrency" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CreditCard_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="CreditCard" Type="Self.CreditCard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CreditCard">
+              <PropertyRef Name="IdClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CreditCard_CreditCardProduct">
+          <End Role="CreditCardProduct" Type="Self.CreditCardProduct" Multiplicity="1" />
+          <End Role="CreditCard" Type="Self.CreditCard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CreditCardProduct">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CreditCard">
+              <PropertyRef Name="IdCreditCardProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CreditCard_Currency">
+          <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
+          <End Role="CreditCard" Type="Self.CreditCard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CreditCard">
+              <PropertyRef Name="IdCurrency" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CreditCard_PaymentSystem">
+          <End Role="PaymentSystem" Type="Self.PaymentSystem" Multiplicity="1" />
+          <End Role="CreditCard" Type="Self.CreditCard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentSystem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CreditCard">
+              <PropertyRef Name="IdPaymentSystem" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CreditProduct_CreditType">
+          <End Role="CreditType" Type="Self.CreditType" Multiplicity="1" />
+          <End Role="CreditProduct" Type="Self.CreditProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CreditType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CreditProduct">
+              <PropertyRef Name="IdCreditTyp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DebitСard_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="DebitСard" Type="Self.DebitСard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DebitСard">
+              <PropertyRef Name="IdClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DebitСard_Currency">
+          <End Role="Currency" Type="Self.Currency" Multiplicity="1" />
+          <End Role="DebitСard" Type="Self.DebitСard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DebitСard">
+              <PropertyRef Name="IdCurrency" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DebitСard_DebtCardProduct">
+          <End Role="DebtCardProduct" Type="Self.DebtCardProduct" Multiplicity="1" />
+          <End Role="DebitСard" Type="Self.DebitСard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DebtCardProduct">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DebitСard">
+              <PropertyRef Name="idProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DebitСard_PaymentSystem">
+          <End Role="PaymentSystem" Type="Self.PaymentSystem" Multiplicity="1" />
+          <End Role="DebitСard" Type="Self.DebitСard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentSystem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DebitСard">
+              <PropertyRef Name="IdPaymentSystem" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Deposit_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Deposit" Type="Self.Deposit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Deposit">
+              <PropertyRef Name="IdClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Deposit_Currency">
+          <End Role="Currency" Type="Self.Currency" Multiplicity="1" />
+          <End Role="Deposit" Type="Self.Deposit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Deposit">
+              <PropertyRef Name="IdCurrency" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Deposit_DepositProduct">
+          <End Role="DepositProduct" Type="Self.DepositProduct" Multiplicity="1" />
+          <End Role="Deposit" Type="Self.Deposit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DepositProduct">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Deposit">
+              <PropertyRef Name="IdDepositProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище DiplomDBModelContainer">
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Credit" EntityType="Self.Credit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CreditCard" EntityType="Self.CreditCard" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CreditCardProduct" EntityType="Self.CreditCardProduct" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CreditProduct" EntityType="Self.CreditProduct" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CreditType" EntityType="Self.CreditType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Currency" EntityType="Self.Currency" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DebitСard" EntityType="Self.DebitСard" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DebtCardProduct" EntityType="Self.DebtCardProduct" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Deposit" EntityType="Self.Deposit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DepositProduct" EntityType="Self.DepositProduct" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Passport" EntityType="Self.Passport" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentSystem" EntityType="Self.PaymentSystem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Client_Passport" Association="Self.FK_Client_Passport">
+            <End Role="Passport" EntitySet="Passport" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Credit_Client" Association="Self.FK_Credit_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Credit" EntitySet="Credit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Credit_CreditProduct" Association="Self.FK_Credit_CreditProduct">
+            <End Role="CreditProduct" EntitySet="CreditProduct" />
+            <End Role="Credit" EntitySet="Credit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Credit_Currency" Association="Self.FK_Credit_Currency">
+            <End Role="Currency" EntitySet="Currency" />
+            <End Role="Credit" EntitySet="Credit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CreditCard_Client" Association="Self.FK_CreditCard_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="CreditCard" EntitySet="CreditCard" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CreditCard_CreditCardProduct" Association="Self.FK_CreditCard_CreditCardProduct">
+            <End Role="CreditCardProduct" EntitySet="CreditCardProduct" />
+            <End Role="CreditCard" EntitySet="CreditCard" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CreditCard_Currency" Association="Self.FK_CreditCard_Currency">
+            <End Role="Currency" EntitySet="Currency" />
+            <End Role="CreditCard" EntitySet="CreditCard" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CreditCard_PaymentSystem" Association="Self.FK_CreditCard_PaymentSystem">
+            <End Role="PaymentSystem" EntitySet="PaymentSystem" />
+            <End Role="CreditCard" EntitySet="CreditCard" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CreditProduct_CreditType" Association="Self.FK_CreditProduct_CreditType">
+            <End Role="CreditType" EntitySet="CreditType" />
+            <End Role="CreditProduct" EntitySet="CreditProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DebitСard_Client" Association="Self.FK_DebitСard_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="DebitСard" EntitySet="DebitСard" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DebitСard_Currency" Association="Self.FK_DebitСard_Currency">
+            <End Role="Currency" EntitySet="Currency" />
+            <End Role="DebitСard" EntitySet="DebitСard" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DebitСard_DebtCardProduct" Association="Self.FK_DebitСard_DebtCardProduct">
+            <End Role="DebtCardProduct" EntitySet="DebtCardProduct" />
+            <End Role="DebitСard" EntitySet="DebitСard" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DebitСard_PaymentSystem" Association="Self.FK_DebitСard_PaymentSystem">
+            <End Role="PaymentSystem" EntitySet="PaymentSystem" />
+            <End Role="DebitСard" EntitySet="DebitСard" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Deposit_Client" Association="Self.FK_Deposit_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Deposit" EntitySet="Deposit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Deposit_Currency" Association="Self.FK_Deposit_Currency">
+            <End Role="Currency" EntitySet="Currency" />
+            <End Role="Deposit" EntitySet="Deposit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Deposit_DepositProduct" Association="Self.FK_Deposit_DepositProduct">
+            <End Role="DepositProduct" EntitySet="DepositProduct" />
+            <End Role="Deposit" EntitySet="Deposit" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DiplomDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPasport" Type="Int32" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Passport" Relationship="Self.FK_Client_Passport" FromRole="Client" ToRole="Passport" />
+          <NavigationProperty Name="Credit" Relationship="Self.FK_Credit_Client" FromRole="Client" ToRole="Credit" />
+          <NavigationProperty Name="CreditCard" Relationship="Self.FK_CreditCard_Client" FromRole="Client" ToRole="CreditCard" />
+          <NavigationProperty Name="DebitСard" Relationship="Self.FK_DebitСard_Client" FromRole="Client" ToRole="DebitСard" />
+          <NavigationProperty Name="Deposit" Relationship="Self.FK_Deposit_Client" FromRole="Client" ToRole="Deposit" />
+        </EntityType>
+        <EntityType Name="Credit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdClient" Type="Int32" Nullable="false" />
+          <Property Name="IdCurrency" Type="Int32" Nullable="false" />
+          <Property Name="IdCreditProduct" Type="Int32" Nullable="false" />
+          <Property Name="Debt" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="DebtRate" Type="Decimal" Precision="4" Scale="2" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="MonthlyPayment" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="Client" Relationship="Self.FK_Credit_Client" FromRole="Credit" ToRole="Client" />
+          <NavigationProperty Name="CreditProduct" Relationship="Self.FK_Credit_CreditProduct" FromRole="Credit" ToRole="CreditProduct" />
+          <NavigationProperty Name="Currency" Relationship="Self.FK_Credit_Currency" FromRole="Credit" ToRole="Currency" />
+        </EntityType>
+        <EntityType Name="CreditCard">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdClient" Type="Int32" Nullable="false" />
+          <Property Name="IdPaymentSystem" Type="Int32" Nullable="false" />
+          <Property Name="IdCreditCardProduct" Type="Int32" Nullable="false" />
+          <Property Name="Balance" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Number" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OwnerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ValidTHRU" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="LoanRate" Type="Decimal" Precision="4" Scale="2" Nullable="false" />
+          <NavigationProperty Name="Client" Relationship="Self.FK_CreditCard_Client" FromRole="CreditCard" ToRole="Client" />
+          <NavigationProperty Name="CreditCardProduct" Relationship="Self.FK_CreditCard_CreditCardProduct" FromRole="CreditCard" ToRole="CreditCardProduct" />
+          <NavigationProperty Name="PaymentSystem" Relationship="Self.FK_CreditCard_PaymentSystem" FromRole="CreditCard" ToRole="PaymentSystem" />
+          <Property Name="IdCurrency" Type="Int32" />
+          <Property Name="CreditLimit" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <NavigationProperty Name="Currency" Relationship="DiplomDBModel.FK_CreditCard_Currency" FromRole="CreditCard" ToRole="Currency" />
+        </EntityType>
+        <EntityType Name="CreditCardProduct">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsEnable" Type="Boolean" Nullable="false" />
+          <Property Name="MinimalDebtRate" Type="Decimal" Precision="4" Scale="2" Nullable="false" />
+          <Property Name="NoDebtDay" Type="Int32" />
+          <NavigationProperty Name="CreditCard" Relationship="Self.FK_CreditCard_CreditCardProduct" FromRole="CreditCardProduct" ToRole="CreditCard" />
+        </EntityType>
+        <EntityType Name="CreditProduct">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdCreditTyp" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsEnable" Type="Boolean" Nullable="false" />
+          <Property Name="MinimalDebtRate" Type="Decimal" Precision="4" Scale="2" Nullable="false" />
+          <NavigationProperty Name="Credit" Relationship="Self.FK_Credit_CreditProduct" FromRole="CreditProduct" ToRole="Credit" />
+          <NavigationProperty Name="CreditType" Relationship="Self.FK_CreditProduct_CreditType" FromRole="CreditProduct" ToRole="CreditType" />
+        </EntityType>
+        <EntityType Name="CreditType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="CreditProduct" Relationship="Self.FK_CreditProduct_CreditType" FromRole="CreditType" ToRole="CreditProduct" />
+        </EntityType>
+        <EntityType Name="Currency">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CurrencySymbol" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Credit" Relationship="Self.FK_Credit_Currency" FromRole="Currency" ToRole="Credit" />
+          <NavigationProperty Name="DebitСard" Relationship="Self.FK_DebitСard_Currency" FromRole="Currency" ToRole="DebitСard" />
+          <NavigationProperty Name="Deposit" Relationship="Self.FK_Deposit_Currency" FromRole="Currency" ToRole="Deposit" />
+          <NavigationProperty Name="CreditCard" Relationship="DiplomDBModel.FK_CreditCard_Currency" FromRole="Currency" ToRole="CreditCard" />
+        </EntityType>
+        <EntityType Name="DebitСard">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdClient" Type="Int32" Nullable="false" />
+          <Property Name="Balance" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="idProduct" Type="Int32" Nullable="false" />
+          <Property Name="Number" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OwnerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ValidTHRU" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IdPaymentSystem" Type="Int32" Nullable="false" />
+          <Property Name="IdCurrency" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Client" Relationship="Self.FK_DebitСard_Client" FromRole="DebitСard" ToRole="Client" />
+          <NavigationProperty Name="Currency" Relationship="Self.FK_DebitСard_Currency" FromRole="DebitСard" ToRole="Currency" />
+          <NavigationProperty Name="DebtCardProduct" Relationship="Self.FK_DebitСard_DebtCardProduct" FromRole="DebitСard" ToRole="DebtCardProduct" />
+          <NavigationProperty Name="PaymentSystem" Relationship="Self.FK_DebitСard_PaymentSystem" FromRole="DebitСard" ToRole="PaymentSystem" />
+        </EntityType>
+        <EntityType Name="DebtCardProduct">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsEnable" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="DebitСard" Relationship="Self.FK_DebitСard_DebtCardProduct" FromRole="DebtCardProduct" ToRole="DebitСard" />
+        </EntityType>
+        <EntityType Name="Deposit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdClient" Type="Int32" Nullable="false" />
+          <Property Name="IdCurrency" Type="Int32" Nullable="false" />
+          <Property Name="IdDepositProduct" Type="Int32" Nullable="false" />
+          <Property Name="Deposit1" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="DepositRate" Type="Decimal" Precision="4" Scale="2" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="ValidTHRU" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Client" Relationship="Self.FK_Deposit_Client" FromRole="Deposit" ToRole="Client" />
+          <NavigationProperty Name="Currency" Relationship="Self.FK_Deposit_Currency" FromRole="Deposit" ToRole="Currency" />
+          <NavigationProperty Name="DepositProduct" Relationship="Self.FK_Deposit_DepositProduct" FromRole="Deposit" ToRole="DepositProduct" />
+        </EntityType>
+        <EntityType Name="DepositProduct">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsEnable" Type="Boolean" Nullable="false" />
+          <Property Name="DebtRate" Type="Decimal" Precision="4" Scale="2" Nullable="false" />
+          <NavigationProperty Name="Deposit" Relationship="Self.FK_Deposit_DepositProduct" FromRole="DepositProduct" ToRole="Deposit" />
+        </EntityType>
+        <EntityType Name="Passport">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Patronomic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BornDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="MIAOfficeTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MIAOfficeCode" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Series" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Number" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RegistrationPlace" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PassportPhoto" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Client" Relationship="Self.FK_Client_Passport" FromRole="Passport" ToRole="Client" />
+        </EntityType>
+        <EntityType Name="PaymentSystem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="CreditCard" Relationship="Self.FK_CreditCard_PaymentSystem" FromRole="PaymentSystem" ToRole="CreditCard" />
+          <NavigationProperty Name="DebitСard" Relationship="Self.FK_DebitСard_PaymentSystem" FromRole="PaymentSystem" ToRole="DebitСard" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_Client_Passport">
+          <End Role="Passport" Type="Self.Passport" Multiplicity="1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Passport">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="IdPasport" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Credit_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Credit" Type="Self.Credit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Credit">
+              <PropertyRef Name="IdClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CreditCard_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="CreditCard" Type="Self.CreditCard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CreditCard">
+              <PropertyRef Name="IdClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DebitСard_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="DebitСard" Type="Self.DebitСard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DebitСard">
+              <PropertyRef Name="IdClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Deposit_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Deposit" Type="Self.Deposit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Deposit">
+              <PropertyRef Name="IdClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Credit_CreditProduct">
+          <End Role="CreditProduct" Type="Self.CreditProduct" Multiplicity="1" />
+          <End Role="Credit" Type="Self.Credit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CreditProduct">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Credit">
+              <PropertyRef Name="IdCreditProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Credit_Currency">
+          <End Role="Currency" Type="Self.Currency" Multiplicity="1" />
+          <End Role="Credit" Type="Self.Credit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Credit">
+              <PropertyRef Name="IdCurrency" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CreditCard_CreditCardProduct">
+          <End Role="CreditCardProduct" Type="Self.CreditCardProduct" Multiplicity="1" />
+          <End Role="CreditCard" Type="Self.CreditCard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CreditCardProduct">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CreditCard">
+              <PropertyRef Name="IdCreditCardProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CreditCard_PaymentSystem">
+          <End Role="PaymentSystem" Type="Self.PaymentSystem" Multiplicity="1" />
+          <End Role="CreditCard" Type="Self.CreditCard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentSystem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CreditCard">
+              <PropertyRef Name="IdPaymentSystem" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CreditProduct_CreditType">
+          <End Role="CreditType" Type="Self.CreditType" Multiplicity="1" />
+          <End Role="CreditProduct" Type="Self.CreditProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CreditType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CreditProduct">
+              <PropertyRef Name="IdCreditTyp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DebitСard_Currency">
+          <End Role="Currency" Type="Self.Currency" Multiplicity="1" />
+          <End Role="DebitСard" Type="Self.DebitСard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DebitСard">
+              <PropertyRef Name="IdCurrency" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Deposit_Currency">
+          <End Role="Currency" Type="Self.Currency" Multiplicity="1" />
+          <End Role="Deposit" Type="Self.Deposit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Deposit">
+              <PropertyRef Name="IdCurrency" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DebitСard_DebtCardProduct">
+          <End Role="DebtCardProduct" Type="Self.DebtCardProduct" Multiplicity="1" />
+          <End Role="DebitСard" Type="Self.DebitСard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DebtCardProduct">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DebitСard">
+              <PropertyRef Name="idProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DebitСard_PaymentSystem">
+          <End Role="PaymentSystem" Type="Self.PaymentSystem" Multiplicity="1" />
+          <End Role="DebitСard" Type="Self.DebitСard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentSystem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DebitСard">
+              <PropertyRef Name="IdPaymentSystem" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Deposit_DepositProduct">
+          <End Role="DepositProduct" Type="Self.DepositProduct" Multiplicity="1" />
+          <End Role="Deposit" Type="Self.Deposit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DepositProduct">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Deposit">
+              <PropertyRef Name="IdDepositProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DiplomDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Client" EntityType="Self.Client" />
+          <EntitySet Name="Credit" EntityType="Self.Credit" />
+          <EntitySet Name="CreditCard" EntityType="Self.CreditCard" />
+          <EntitySet Name="CreditCardProduct" EntityType="Self.CreditCardProduct" />
+          <EntitySet Name="CreditProduct" EntityType="Self.CreditProduct" />
+          <EntitySet Name="CreditType" EntityType="Self.CreditType" />
+          <EntitySet Name="Currency" EntityType="Self.Currency" />
+          <EntitySet Name="DebitСard" EntityType="Self.DebitСard" />
+          <EntitySet Name="DebtCardProduct" EntityType="Self.DebtCardProduct" />
+          <EntitySet Name="Deposit" EntityType="Self.Deposit" />
+          <EntitySet Name="DepositProduct" EntityType="Self.DepositProduct" />
+          <EntitySet Name="Passport" EntityType="Self.Passport" />
+          <EntitySet Name="PaymentSystem" EntityType="Self.PaymentSystem" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <AssociationSet Name="FK_Client_Passport" Association="Self.FK_Client_Passport">
+            <End Role="Passport" EntitySet="Passport" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Credit_Client" Association="Self.FK_Credit_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Credit" EntitySet="Credit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CreditCard_Client" Association="Self.FK_CreditCard_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="CreditCard" EntitySet="CreditCard" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DebitСard_Client" Association="Self.FK_DebitСard_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="DebitСard" EntitySet="DebitСard" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Deposit_Client" Association="Self.FK_Deposit_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Deposit" EntitySet="Deposit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Credit_CreditProduct" Association="Self.FK_Credit_CreditProduct">
+            <End Role="CreditProduct" EntitySet="CreditProduct" />
+            <End Role="Credit" EntitySet="Credit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Credit_Currency" Association="Self.FK_Credit_Currency">
+            <End Role="Currency" EntitySet="Currency" />
+            <End Role="Credit" EntitySet="Credit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CreditCard_CreditCardProduct" Association="Self.FK_CreditCard_CreditCardProduct">
+            <End Role="CreditCardProduct" EntitySet="CreditCardProduct" />
+            <End Role="CreditCard" EntitySet="CreditCard" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CreditCard_PaymentSystem" Association="Self.FK_CreditCard_PaymentSystem">
+            <End Role="PaymentSystem" EntitySet="PaymentSystem" />
+            <End Role="CreditCard" EntitySet="CreditCard" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CreditProduct_CreditType" Association="Self.FK_CreditProduct_CreditType">
+            <End Role="CreditType" EntitySet="CreditType" />
+            <End Role="CreditProduct" EntitySet="CreditProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DebitСard_Currency" Association="Self.FK_DebitСard_Currency">
+            <End Role="Currency" EntitySet="Currency" />
+            <End Role="DebitСard" EntitySet="DebitСard" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Deposit_Currency" Association="Self.FK_Deposit_Currency">
+            <End Role="Currency" EntitySet="Currency" />
+            <End Role="Deposit" EntitySet="Deposit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DebitСard_DebtCardProduct" Association="Self.FK_DebitСard_DebtCardProduct">
+            <End Role="DebtCardProduct" EntitySet="DebtCardProduct" />
+            <End Role="DebitСard" EntitySet="DebitСard" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DebitСard_PaymentSystem" Association="Self.FK_DebitСard_PaymentSystem">
+            <End Role="PaymentSystem" EntitySet="PaymentSystem" />
+            <End Role="DebitСard" EntitySet="DebitСard" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Deposit_DepositProduct" Association="Self.FK_Deposit_DepositProduct">
+            <End Role="DepositProduct" EntitySet="DepositProduct" />
+            <End Role="Deposit" EntitySet="Deposit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CreditCard_Currency" Association="DiplomDBModel.FK_CreditCard_Currency">
+            <End Role="Currency" EntitySet="Currency" />
+            <End Role="CreditCard" EntitySet="CreditCard" />
+          </AssociationSet>
+        </EntityContainer>
+        <Association Name="FK_CreditCard_Currency">
+          <End Type="DiplomDBModel.Currency" Role="Currency" Multiplicity="0..1" />
+          <End Type="DiplomDBModel.CreditCard" Role="CreditCard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CreditCard">
+              <PropertyRef Name="IdCurrency" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище DiplomDBModelContainer" CdmEntityContainer="DiplomDBEntities">
+          <EntitySetMapping Name="Client">
+            <EntityTypeMapping TypeName="DiplomDBModel.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdPasport" ColumnName="IdPasport" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Credit">
+            <EntityTypeMapping TypeName="DiplomDBModel.Credit">
+              <MappingFragment StoreEntitySet="Credit">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdClient" ColumnName="IdClient" />
+                <ScalarProperty Name="IdCurrency" ColumnName="IdCurrency" />
+                <ScalarProperty Name="IdCreditProduct" ColumnName="IdCreditProduct" />
+                <ScalarProperty Name="Debt" ColumnName="Debt" />
+                <ScalarProperty Name="DebtRate" ColumnName="DebtRate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="MonthlyPayment" ColumnName="MonthlyPayment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CreditCard">
+            <EntityTypeMapping TypeName="DiplomDBModel.CreditCard">
+              <MappingFragment StoreEntitySet="CreditCard">
+                <ScalarProperty Name="CreditLimit" ColumnName="CreditLimit" />
+                <ScalarProperty Name="IdCurrency" ColumnName="IdCurrency" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdClient" ColumnName="IdClient" />
+                <ScalarProperty Name="IdPaymentSystem" ColumnName="IdPaymentSystem" />
+                <ScalarProperty Name="IdCreditCardProduct" ColumnName="IdCreditCardProduct" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="OwnerName" ColumnName="OwnerName" />
+                <ScalarProperty Name="ValidTHRU" ColumnName="ValidTHRU" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="LoanRate" ColumnName="LoanRate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CreditCardProduct">
+            <EntityTypeMapping TypeName="DiplomDBModel.CreditCardProduct">
+              <MappingFragment StoreEntitySet="CreditCardProduct">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+                <ScalarProperty Name="MinimalDebtRate" ColumnName="MinimalDebtRate" />
+                <ScalarProperty Name="NoDebtDay" ColumnName="NoDebtDay" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CreditProduct">
+            <EntityTypeMapping TypeName="DiplomDBModel.CreditProduct">
+              <MappingFragment StoreEntitySet="CreditProduct">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdCreditTyp" ColumnName="IdCreditTyp" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+                <ScalarProperty Name="MinimalDebtRate" ColumnName="MinimalDebtRate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CreditType">
+            <EntityTypeMapping TypeName="DiplomDBModel.CreditType">
+              <MappingFragment StoreEntitySet="CreditType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Currency">
+            <EntityTypeMapping TypeName="DiplomDBModel.Currency">
+              <MappingFragment StoreEntitySet="Currency">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="CurrencySymbol" ColumnName="CurrencySymbol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DebitСard">
+            <EntityTypeMapping TypeName="DiplomDBModel.DebitСard">
+              <MappingFragment StoreEntitySet="DebitСard">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdClient" ColumnName="IdClient" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="idProduct" ColumnName="idProduct" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="OwnerName" ColumnName="OwnerName" />
+                <ScalarProperty Name="ValidTHRU" ColumnName="ValidTHRU" />
+                <ScalarProperty Name="IdPaymentSystem" ColumnName="IdPaymentSystem" />
+                <ScalarProperty Name="IdCurrency" ColumnName="IdCurrency" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DebtCardProduct">
+            <EntityTypeMapping TypeName="DiplomDBModel.DebtCardProduct">
+              <MappingFragment StoreEntitySet="DebtCardProduct">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Deposit">
+            <EntityTypeMapping TypeName="DiplomDBModel.Deposit">
+              <MappingFragment StoreEntitySet="Deposit">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdClient" ColumnName="IdClient" />
+                <ScalarProperty Name="IdCurrency" ColumnName="IdCurrency" />
+                <ScalarProperty Name="IdDepositProduct" ColumnName="IdDepositProduct" />
+                <ScalarProperty Name="Deposit1" ColumnName="Deposit" />
+                <ScalarProperty Name="DepositRate" ColumnName="DepositRate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ValidTHRU" ColumnName="ValidTHRU" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DepositProduct">
+            <EntityTypeMapping TypeName="DiplomDBModel.DepositProduct">
+              <MappingFragment StoreEntitySet="DepositProduct">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+                <ScalarProperty Name="DebtRate" ColumnName="DebtRate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Passport">
+            <EntityTypeMapping TypeName="DiplomDBModel.Passport">
+              <MappingFragment StoreEntitySet="Passport">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Patronomic" ColumnName="Patronomic" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="BornDate" ColumnName="BornDate" />
+                <ScalarProperty Name="MIAOfficeTitle" ColumnName="MIAOfficeTitle" />
+                <ScalarProperty Name="MIAOfficeCode" ColumnName="MIAOfficeCode" />
+                <ScalarProperty Name="Series" ColumnName="Series" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="RegistrationPlace" ColumnName="RegistrationPlace" />
+                <ScalarProperty Name="PassportPhoto" ColumnName="PassportPhoto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentSystem">
+            <EntityTypeMapping TypeName="DiplomDBModel.PaymentSystem">
+              <MappingFragment StoreEntitySet="PaymentSystem">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="DiplomDBModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

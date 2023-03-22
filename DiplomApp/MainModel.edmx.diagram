@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4dec8ddf879942a0837064bc1c1f3b57" Name="Diagram1">
+        <EntityTypeShape EntityType="DiplomDBModel.Client" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiplomDBModel.Credit" Width="1.5" PointX="5.25" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiplomDBModel.CreditCard" Width="1.5" PointX="8.25" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiplomDBModel.CreditCardProduct" Width="1.5" PointX="6" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiplomDBModel.CreditProduct" Width="1.5" PointX="3" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiplomDBModel.CreditType" Width="1.5" PointX="0.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiplomDBModel.Currency" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiplomDBModel.DebitСard" Width="1.5" PointX="5.25" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiplomDBModel.DebtCardProduct" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiplomDBModel.Deposit" Width="1.5" PointX="5.25" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiplomDBModel.DepositProduct" Width="1.5" PointX="3" PointY="19.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiplomDBModel.Passport" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiplomDBModel.PaymentSystem" Width="1.5" PointX="3" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiplomDBModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="DiplomDBModel.FK_Client_Passport" ManuallyRouted="false" />
+        <AssociationConnector Association="DiplomDBModel.FK_Credit_Client" ManuallyRouted="false" />
+        <AssociationConnector Association="DiplomDBModel.FK_CreditCard_Client" ManuallyRouted="false" />
+        <AssociationConnector Association="DiplomDBModel.FK_DebitСard_Client" ManuallyRouted="false" />
+        <AssociationConnector Association="DiplomDBModel.FK_Deposit_Client" ManuallyRouted="false" />
+        <AssociationConnector Association="DiplomDBModel.FK_Credit_CreditProduct" ManuallyRouted="false" />
+        <AssociationConnector Association="DiplomDBModel.FK_Credit_Currency" ManuallyRouted="false" />
+        <AssociationConnector Association="DiplomDBModel.FK_CreditCard_CreditCardProduct" ManuallyRouted="false" />
+        <AssociationConnector Association="DiplomDBModel.FK_CreditCard_PaymentSystem" ManuallyRouted="false" />
+        <AssociationConnector Association="DiplomDBModel.FK_CreditProduct_CreditType" ManuallyRouted="false" />
+        <AssociationConnector Association="DiplomDBModel.FK_DebitСard_Currency" ManuallyRouted="false" />
+        <AssociationConnector Association="DiplomDBModel.FK_Deposit_Currency" ManuallyRouted="false" />
+        <AssociationConnector Association="DiplomDBModel.FK_DebitСard_DebtCardProduct" ManuallyRouted="false" />
+        <AssociationConnector Association="DiplomDBModel.FK_DebitСard_PaymentSystem" ManuallyRouted="false" />
+        <AssociationConnector Association="DiplomDBModel.FK_Deposit_DepositProduct" ManuallyRouted="false" />
+        <AssociationConnector Association="DiplomDBModel.FK_CreditCard_Currency" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,192 @@
+﻿<Window x:Class="DiplomApp.DiagramAndStatisticWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DiplomApp"
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+        xmlns:uc="clr-namespace:Wpf.PieChart"
+        mc:Ignorable="d"
+        Title="DiagramAndStatisticWindow" Height="800" Width="1200" Background="WhiteSmoke" Icon="/Resources/Logo.png">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.15*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Row="0" Grid.Column="0">
+            <Image Source="/Logo.png"/>
+        </Grid>
+
+        <Label Content="Анализ:" Grid.Row="0" Grid.Column="1" HorizontalContentAlignment ="Right" VerticalContentAlignment="Center" FontSize="22"/>
+        <Button Grid.Row="0" Grid.Column="2" Margin="2,15" FontSize="18" Content="Общий" Click="MainLayerButton_Click"/>
+        <Button Grid.Row="0" Grid.Column="3" Margin="2,15" FontSize="18" Content="Дебетовых карт" Click="DebtCardLayerButton_Click"/>
+        <Button Grid.Row="0" Grid.Column="4" Margin="2,15" FontSize="18" Content="Кредитных карт" Click="CreditCardLayerButton_Click"/>
+        <Button Grid.Row="0" Grid.Column="5" Margin="2,15" FontSize="18" Content="Кредитов" Click="CreditLayerButton_Click"/>
+        <Button Grid.Row="0" Grid.Column="6" Margin="2,15" FontSize="18" Content="Вкладов" Click="DepositLayerButton_Click"/>
+        <Button Grid.Row="0" Grid.Column="7" Margin="2,15" FontSize="18" Content="Выйти в меню" Click="MainMenyButton_Click"/>
+
+        <Grid Grid.Row="1" Grid.ColumnSpan="8" x:Name="mainLayer" Visibility="Visible">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0" Content="Количество продаж" FontSize="20" HorizontalContentAlignment="Center" VerticalAlignment="Bottom"/>
+            <Label Grid.Row="0" Grid.Column="1" Content="Денежный оборот (рубли)" FontSize="20" HorizontalContentAlignment="Center" VerticalAlignment="Bottom"/>
+            <Label Grid.Row="2" Grid.Column="0" Content="Денежный оборот (евро)" FontSize="20" HorizontalContentAlignment="Center" VerticalAlignment="Bottom"/>
+            <Label Grid.Row="2" Grid.Column="1" Content="Денежный оборот (доллары)" FontSize="20" HorizontalContentAlignment="Center" VerticalAlignment="Bottom"/>
+
+            <Grid Grid.Row="1" Grid.Column="0">
+                <uc:DoughnutChartExample x:Name="sellChart"/>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="1">
+                <uc:DoughnutChartExample x:Name="moneyChartRUB"/>
+            </Grid>
+            <Grid Grid.Row="3" Grid.Column="0">
+                <uc:DoughnutChartExample x:Name="moneyChartEUR"/>
+            </Grid>
+            <Grid Grid.Row="3" Grid.Column="1">
+                <uc:DoughnutChartExample x:Name="moneyChartUSD"/>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="1" Grid.ColumnSpan="8" x:Name="debtCardLayer" Visibility="Hidden">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0" Content="Количество продаж" FontSize="20" HorizontalContentAlignment="Center" VerticalAlignment="Bottom"/>
+            <Label Grid.Row="0" Grid.Column="1" Content="Сумма на дебетовых картах в рублях" FontSize="20" HorizontalContentAlignment="Center" VerticalAlignment="Bottom"/>
+            <Label Grid.Row="2" Grid.Column="0" Content="Сумма на дебетовых картах в евро" FontSize="20" HorizontalContentAlignment="Center" VerticalAlignment="Bottom"/>
+            <Label Grid.Row="2" Grid.Column="1" Content="Сумма на дебетовых картах в долларах" FontSize="20" HorizontalContentAlignment="Center" VerticalAlignment="Bottom"/>
+
+            <Grid Grid.Row="1" Grid.Column="0">
+                <uc:DoughnutChartExample x:Name="debtCardProductChart"/>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="1">
+                <uc:DoughnutChartExample x:Name="debtCardProductChartRUB"/>
+            </Grid>
+            <Grid Grid.Row="3" Grid.Column="0">
+                <uc:DoughnutChartExample x:Name="debtCardProductChartEUR"/>
+            </Grid>
+            <Grid Grid.Row="3" Grid.Column="1">
+                <uc:DoughnutChartExample x:Name="debtCardProductChartUSD"/>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="1" Grid.ColumnSpan="8" x:Name="creditCardLayer" Visibility="Hidden">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0" Content="Количество продаж" FontSize="20" HorizontalContentAlignment="Center" VerticalAlignment="Bottom"/>
+            <Label Grid.Row="0" Grid.Column="1" Content="Сумма задолженности в рублях" FontSize="20" HorizontalContentAlignment="Center" VerticalAlignment="Bottom"/>
+            <Label Grid.Row="2" Grid.Column="0" Content="Сумма задолженности в евро" FontSize="20" HorizontalContentAlignment="Center" VerticalAlignment="Bottom"/>
+            <Label Grid.Row="2" Grid.Column="1" Content="Сумма задолженности в долларах" FontSize="20" HorizontalContentAlignment="Center" VerticalAlignment="Bottom"/>
+
+            <Grid Grid.Row="1" Grid.Column="0">
+                <uc:DoughnutChartExample x:Name="creditCardProductChart"/>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="1">
+                <uc:DoughnutChartExample x:Name="creditCardProductChartRUB"/>
+            </Grid>
+            <Grid Grid.Row="3" Grid.Column="0">
+                <uc:DoughnutChartExample x:Name="creditCardProductChartEUR"/>
+            </Grid>
+            <Grid Grid.Row="3" Grid.Column="1">
+                <uc:DoughnutChartExample x:Name="creditCardProductChartUSD"/>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="1" Grid.ColumnSpan="8" x:Name="creditLayer" Visibility="Hidden">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0" Content="Количество продаж" FontSize="20" HorizontalContentAlignment="Center" VerticalAlignment="Bottom"/>
+            <Label Grid.Row="0" Grid.Column="1" Content="Сумма задолженности в рублях" FontSize="20" HorizontalContentAlignment="Center" VerticalAlignment="Bottom"/>
+            <Label Grid.Row="2" Grid.Column="0" Content="Сумма задолженности в евро" FontSize="20" HorizontalContentAlignment="Center" VerticalAlignment="Bottom"/>
+            <Label Grid.Row="2" Grid.Column="1" Content="Сумма задолженности в долларах" FontSize="20" HorizontalContentAlignment="Center" VerticalAlignment="Bottom"/>
+
+            <Grid Grid.Row="1" Grid.Column="0">
+                <uc:DoughnutChartExample x:Name="creditProductChart"/>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="1">
+                <uc:DoughnutChartExample x:Name="creditProductChartRUB"/>
+            </Grid>
+            <Grid Grid.Row="3" Grid.Column="0">
+                <uc:DoughnutChartExample x:Name="creditProductChartEUR"/>
+            </Grid>
+            <Grid Grid.Row="3" Grid.Column="1">
+                <uc:DoughnutChartExample x:Name="creditProductChartUSD"/>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="1" Grid.ColumnSpan="8" x:Name="depositLayer" Visibility="Hidden">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0" Content="Количество продаж" FontSize="20" HorizontalContentAlignment="Center" VerticalAlignment="Bottom"/>
+            <Label Grid.Row="0" Grid.Column="1" Content="Сумма вкладов в рублях" FontSize="20" HorizontalContentAlignment="Center" VerticalAlignment="Bottom"/>
+            <Label Grid.Row="2" Grid.Column="0" Content="Сумма вкладов в евро" FontSize="20" HorizontalContentAlignment="Center" VerticalAlignment="Bottom"/>
+            <Label Grid.Row="2" Grid.Column="1" Content="Сумма вкладов в долларах" FontSize="20" HorizontalContentAlignment="Center" VerticalAlignment="Bottom"/>
+
+            <Grid Grid.Row="1" Grid.Column="0">
+                <uc:DoughnutChartExample x:Name="depositProductChart"/>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="1">
+                <uc:DoughnutChartExample x:Name="depositProductChartRUB"/>
+            </Grid>
+            <Grid Grid.Row="3" Grid.Column="0">
+                <uc:DoughnutChartExample x:Name="depositProductChartEUR"/>
+            </Grid>
+            <Grid Grid.Row="3" Grid.Column="1">
+                <uc:DoughnutChartExample x:Name="depositProductChartUSD"/>
+            </Grid>
+
+        </Grid>
+
+    </Grid>
+</Window>
